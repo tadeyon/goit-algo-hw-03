@@ -4,13 +4,12 @@ def get_numbers_ticket(min, max, quantity):
     
     result = []
 
-    if min < 1 or max > 1000:
+    if min < 1 or max > 1000 or min > max:
         return result
     
-    if quantity <= 0:
+    if quantity <= 0 or quantity > (max - min + 1):
         return result
 
-    for i in range(quantity):
-        result.append(random.randint(min, max))
+    result = random.sample(range(min, max + 1), quantity)
 
-    return sorted(set(result))
+    return sorted(result)
